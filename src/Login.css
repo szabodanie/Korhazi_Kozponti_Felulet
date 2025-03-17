@@ -1,0 +1,125 @@
+/* src/css/login.css */
+
+.login-container {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 3px solid #ff0000;
+  background-image: url('../src/kartyahatter.png');
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  color: #ff0000;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff0000;
+  }
+  
+  .form-label {
+    margin-bottom: 10px;
+  }
+  button {
+    background-color: red;
+    color: #ff0000; /* A gomb szövege piros lesz */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  input.form-control {
+    margin-bottom: 15px;
+  }
+  
+  button {
+    background-color: red;
+   
+  }
+
+
+
+  
+
+  
+  .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .btn {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    
+    color: #ff0000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+
+  .notification {
+    text-align: center;
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+
+
+
+
+  .login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-page input {
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+.login-page button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #ff0000;
+  
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button{
+  color: #ff0000;
+}
+
+.terms {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.terms input {
+    margin-right: 10px;
+}
+  
+.alahuzott{
+  color: #ff0000;
+}

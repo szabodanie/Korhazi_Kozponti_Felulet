@@ -1,0 +1,70 @@
+/* DoctorsPage.css */
+.DoctorsPage {
+    text-align: center;
+}
+
+.filter-buttons {
+    margin-bottom: 16px;
+}
+
+.filter-buttons button {
+    margin: 0 8px;
+    padding: 8px 16px;
+    background-color: #cc0000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.filter-buttons button:hover {
+    background-color: #a30000;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+}
+
+/* Card.css */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.card h2 {
+    font-size: 1.25em;
+    margin: 16px 0 8px;
+}
+
+.card p {
+    font-size: 1em;
+    color: #666;
+}
+
+.card-content button {
+    margin-top: 8px;
+    padding: 8px 16px;
+    background-color: #cc0000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.card-content button:hover {
+    background-color: #a30000;
+}

@@ -1,0 +1,131 @@
+/* Alapstílus a navigációhoz */
+nav {
+  background-color: #333;
+  background-image: url('../src/navkep2.png');
+  border-bottom: 5px solid #000;
+  padding: 0px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+li {
+  position: relative;
+  padding: 0px 0px;
+  border-left: 1px solid #bbb;
+}
+
+li a,
+.nav-link-button {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 14px 16px;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Hover effekt: alatta megjelenik egy növekvő vonal */
+li a::after,
+.nav-link-button::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: red;
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+li a:hover::after,
+.nav-link-button:hover::after {
+  width: 112%;
+  left: 0;
+}
+
+li a:hover,
+.nav-link-button:hover {
+  
+}
+
+/* Kijelentkezés gomb stílus */
+.nav-link-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  position: relative;
+  padding: 14px 16px;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Jobb oldalra igazított elemek */
+.right {
+  margin-left: auto;
+}
+
+/* Bejelentkezés és regisztráció közötti elválasztás */
+.bordered {
+  border-left: 1px solid #bbb;
+}
+
+/* Felhasználói profilkép stílusai */
+/* Jobbra igazított felhasználónév */
+/* Felhasználónév és ikon jobb oldalra igazítása */
+.user-section {
+  margin-left: auto; /* Helyezze a jobb szélére */
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  font-size: 18px;
+}
+
+.user-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* Dropdown menü stílusai */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: rgb(43, 43, 43);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  min-width: 160px;
+  z-index: 1;
+}
+
+.user-section:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu .nav-link-button {
+  width: 100%;
+  text-align: left;
+  padding: 12px 16px;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(72, 72, 72);
+}
+
+.dropdown-menu .nav-link-button:hover {
+  background-color: #595959;
+}

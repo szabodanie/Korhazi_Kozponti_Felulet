@@ -29,6 +29,7 @@ li a,
   font-size: 18px;
   padding: 14px 16px;
   transition: color 0.3s ease-in-out;
+  font-family: 'Tektur', sans-serif;
 }
 
 /* Hover effekt: alatta megjelenik egy növekvő vonal */
@@ -128,4 +129,12 @@ li a:hover,
 
 .dropdown-menu .nav-link-button:hover {
   background-color: #595959;
+}
+.disabled-link {
+  color: #aaa; /* Gray color */
+  pointer-events: none; /* Prevent clicking */
+}
+
+.disabled-link:hover {
+  color: #aaa; /* Prevent hover effect on disabled links */
 }

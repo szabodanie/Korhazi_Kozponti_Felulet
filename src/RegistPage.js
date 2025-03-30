@@ -3,35 +3,45 @@ import { useNavigate, Link } from 'react-router-dom';
 import './registpage.css';
 import axios from 'axios';
 
-const userData = `
-user1,user1@example.com,pass1
-user2,user2@example.com,pass2
-user3,user3@example.com,pass3
-`;
-
 function RegisterPage() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState('user'); // Alapértelmezett szerepkör: user
+  const [specialty, setSpecialty] = useState(''); // Csak admin esetén
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
   const [notification, setNotification] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  // Regisztráció API hívás
+  const handleRegister = async (e) => {
     e.preventDefault();
+
+    // Ellenőrizzük, hogy elfogadták-e a felhasználói feltételeket
     if (!acceptedTerms) {
-      alert('Általános szerződési feltételek');
+      alert('Általános szerződési feltételek elfogadása szükséges');
       return;
     }
-    console.log('Felhasználónév:', username);
-    console.log('Email:', email);
-    console.log('Jelszó:', password);
 
-    setNotification('Gratulálunk! Sikeresen regisztráltál.');
-    setTimeout(() => {
-      navigate('/login');
-    }, 2000);
+    // API hívás a backendhez
+    try {
+      const response = await axios.post('https://localhost:7159/api/Auth/register', {
+        username,
+        email,
+        password,
+        role,
+        specialty: role === 'admin' ? specialty : null, // Specialty csak admin esetén
+      });
+
+      setNotification(response.data.message); // Sikeres üzenet
+      setTimeout(() => {
+        navigate('/login'); // Regisztráció után átirányítás a bejelentkezési oldalra
+      }, 2000);
+    } catch (err) {
+      setError(err.response?.data || 'Hiba történt a regisztráció során.');
+    }
   };
 
   const openTermsPopup = (e) => {
@@ -56,6 +66,7 @@ function RegisterPage() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Írd be a felhasználóneved"
+            required
           />
         </div>
         <div className="mb-3">
@@ -67,6 +78,7 @@ function RegisterPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Írd be az email címed"
+            required
           />
         </div>
         <div className="mb-3">
@@ -78,8 +90,34 @@ function RegisterPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Írd be a jelszavad"
+            required
           />
         </div>
+        <div className="mb-3">
+          <label htmlFor="role" className="form-label">Szerepkör</label>
+          <select
+            className="form-control"
+            id="role"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          >
+            <option value="user">Felhasználó</option>
+            <option value="admin">Admin (Orvos)</option>
+          </select>
+        </div>
+        {role === 'admin' && (
+          <div className="mb-3">
+            <label htmlFor="specialty" className="form-label">Szakirány</label>
+            <input
+              type="text"
+              className="form-control"
+              id="specialty"
+              value={specialty}
+              onChange={(e) => setSpecialty(e.target.value)}
+              placeholder="Írd be az orvosi szakirányt"
+            />
+          </div>
+        )}
         <div className="terms">
           <input
             type="checkbox"
@@ -90,10 +128,12 @@ function RegisterPage() {
             elfogadom a <Link to="#" onClick={openTermsPopup}>Felhasználói feltételek</Link>
           </label>
         </div>
-        <button type="submit" className="btn w-100" style={{color:'red'}}>Regisztráció</button>
+        <button type="submit" className="btn w-100">Regisztráció</button>
       </form>
+
       {notification && <p className="notification">{notification}</p>}
-      
+      {error && <p className="error">{error}</p>}
+
       {showTerms && (
         <div className="popup">
           <div className="popup-content">

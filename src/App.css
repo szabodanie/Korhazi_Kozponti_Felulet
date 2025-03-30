@@ -1,18 +1,18 @@
+/* src/App.css */
+
 /* Általános beállítások */
+@font-face {
+  font-family: 'Tektur'; /* Betűtípus neve */
+  src: url('./assets/fonts/Tektur-Regular.ttf') format('truetype'); /* Betűtípus fájl elérési útja */
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Tektur', Arial, sans-serif; /* A Tektur betűtípus alkalmazása */
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
-}
-
-.background-container {
-  background-image: url('../src/korhatter.png'); /* Ha az src-ben van */
-  width: 100%;
-  height: 120vh;
-  background-repeat: repeat;
-  background-size: cover; /* vagy background-size: auto; a hatás függvényében */
-  /* Animáció eltávolítva, így a háttér nem mozog */
 }
 
 /* Kulcskockák az ikonok mozgásához, méret növekedéséhez és eltűnéséhez */
@@ -37,73 +37,97 @@ body {
   animation-delay: calc(var(--icon-index) * 1s); /* Időbeli késleltetés minden ikon esetében */
 }
 
-/* DoctorsPage.css */
-.DoctorsPage {
-    text-align: center;
+/* background-container CSS */
+.background-container {
+  background-image: url('../src/korhatter.png'); /* Ha az src-ben van */
+  width: 100%;
+  height: 120vh;
+  background-repeat: repeat;
+  background-size: cover; /* vagy background-size: auto; a hatás függvényében */
+  position: relative; /* Add position relative to allow z-index to work properly */
+  z-index: 0; /* Set a lower z-index so the squares appear above it */
 }
 
-.filter-buttons {
-    margin-bottom: 16px;
+/* FloatingSquares CSS (FloatingSquares.css) */
+.wrapper span {
+  position: fixed;
+  bottom: -180px;
+  height: 50px;
+  width: 50px;
+  z-index: 10; /* Ensure floating squares have a higher z-index */
+  background-color: #18191f;
+  box-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff, 0 0 200px #0072ff;
+  animation: animate 10s linear infinite;
 }
 
-.filter-buttons button {
-    margin: 0 8px;
-    padding: 8px 16px;
-    background-color: #0077cc;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.wrapper span:nth-child(1) {
+  left: 60px;
+  animation-delay: 0.6s;
 }
 
-.filter-buttons button:hover {
-    background-color: #005fa3;
+.wrapper span:nth-child(2) {
+  left: 10%;
+  animation-delay: 3s;
+  width: 60px;
+  height: 60px;
 }
 
-.card-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding: 16px;
+.wrapper span:nth-child(3) {
+  left: 20%;
+  animation-delay: 2s;
 }
 
-/* Card.css */
-.card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 16px;
-    max-width: 300px;
-    text-align: center;
+.wrapper span:nth-child(4) {
+  left: 30%;
+  animation-delay: 5s;
+  width: 80px;
+  height: 80px;
 }
 
-.card img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
+.wrapper span:nth-child(5) {
+  left: 40%;
+  animation-delay: 1s;
 }
 
-.card h2 {
-    font-size: 1.25em;
-    margin: 16px 0 8px;
+.wrapper span:nth-child(6) {
+  left: 50%;
+  animation-delay: 7s;
 }
 
-.card p {
-    font-size: 1em;
-    color: #666;
+.wrapper span:nth-child(7) {
+  left: 60%;
+  animation-delay: 6s;
+  width: 100px;
+  height: 100px;
 }
 
-.card-content button {
-    margin-top: 8px;
-    padding: 8px 16px;
-    background-color: #0077cc;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.wrapper span:nth-child(8) {
+  left: 70%;
+  animation-delay: 8s;
 }
 
-.card-content button:hover {
-    background-color: #005fa3;
+.wrapper span:nth-child(9) {
+  left: 80%;
+  animation-delay: 6s;
+  width: 90px;
+  height: 90px;
+}
+
+.wrapper span:nth-child(10) {
+  left: 90%;
+  animation-delay: 4s;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-800px) rotate(360deg);
+    opacity: 0;
+  }
 }

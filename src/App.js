@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar';
@@ -10,8 +9,11 @@ import RegistPage from './RegistPage';
 import AdminPage from './AdminPage';
 import TermsPage from './TermsPage';
 import { UserProvider } from './UserContext';
+import DoctorLoginPage from './DoctorLoginPage';
 import './App.css';
 import FloatingSquares from './FloatingSquares';
+import './assets/fonts/Tektur-Regular.ttf';
+
 
 function App() {
   const [icons, setIcons] = useState([]);
@@ -51,15 +53,13 @@ function App() {
             <Route path="/regisztracio" element={<RegistPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/admin" element={<AdminPage />} />
+            <Route path="/doctor-login" element={<DoctorLoginPage />} />
           </Routes>
-          
 
-          
         </div>
       </Router>
     </UserProvider>
   );
-  
 }
 
 export default App;

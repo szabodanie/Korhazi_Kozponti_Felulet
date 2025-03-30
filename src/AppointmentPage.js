@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react'; // Az importok itt kell legyenek!
-import './Appointment.css'
+import React, { useState, useEffect } from 'react';
+import './Appointment.css';
 import axios from 'axios';
 
-
-
 function AppointmentPage() {
-  const [doctorName, setDoctorName] = useState('');
-  const [patientName, setPatientName] = useState('');
-  const [date, setDate] = useState('');
-  const [status, setStatus] = useState('pending');
+  const [orvosnev, setOrvosnev] = useState('');
+  const [betegneve, setBetegneve] = useState('');
+  const [statusz, setStatusz] = useState('Függőben');
+  const [panasz, setPanasz] = useState('');
   const [appointments, setAppointments] = useState([]);
 
-  // Időpontok lekérése a backend API-ból, amikor a komponens betöltődik
+  // API-ból való adatok lekérése
   useEffect(() => {
-    axios.get('http://localhost:5000/api/appointments') // Az API URL-je
+    axios.get('http://localhost:5000/api/Appointments') // Backend URL
       .then((response) => {
         setAppointments(response.data);
       })
@@ -26,19 +24,19 @@ function AppointmentPage() {
     e.preventDefault();
 
     const newAppointment = {
-      doctor_name: doctorName,
-      patient_name: patientName,
-      appointment_date: date,
-      status: status
+      orvosnev: orvosnev,
+      betegneve: betegneve,
+      statusz: statusz,
+      panasz: panasz,
     };
 
-    axios.get('https://localhost:7159/api/ReactApp', newAppointment) // Az API URL-je
+    axios.post('https://localhost:7159/api/Appointments', newAppointment) // Backend URL
       .then((response) => {
         setAppointments([...appointments, response.data]);
-        setDoctorName('');
-        setPatientName('');
-        setDate('');
-        setStatus('pending');
+        setOrvosnev('');
+        setBetegneve('');
+        setStatusz('Függőben');
+        setPanasz('');
       })
       .catch((error) => {
         console.error('Hiba történt:', error);
@@ -46,15 +44,15 @@ function AppointmentPage() {
   };
 
   return (
-    <div className="test">
+    <div className="appointment-container">
       <h1>Időpont hozzáadása</h1>
-      <form onSubmit={handleAddAppointment}>
+      <form onSubmit={handleAddAppointment} className="appointment-form">
         <div>
           <label>Orvos neve:</label>
           <input
             type="text"
-            value={doctorName}
-            onChange={(e) => setDoctorName(e.target.value)}
+            value={orvosnev}
+            onChange={(e) => setOrvosnev(e.target.value)}
             required
           />
         </div>
@@ -62,43 +60,45 @@ function AppointmentPage() {
           <label>Beteg neve:</label>
           <input
             type="text"
-            value={patientName}
-            onChange={(e) => setPatientName(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Időpont:</label>
-          <input
-            type="datetime-local"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
+            value={betegneve}
+            onChange={(e) => setBetegneve(e.target.value)}
             required
           />
         </div>
         <div>
           <label>Statusz:</label>
           <select
-            value={status}
-            onChange={(e) => setStatus(e.target.value)}
+            value={statusz}
+            onChange={(e) => setStatusz(e.target.value)}
             required
           >
-            <option value="pending">Függőben</option>
-            <option value="confirmed">Megerősítve</option>
-            <option value="cancelled">Törölve</option>
+            <option value="Függőben">Függőben</option>
+            <option value="Megerősítve">Megerősítve</option>
+            <option value="Törölve">Törölve</option>
           </select>
+        </div>
+        <label>Panasz:</label>
+        <div>
+          
+          <textarea
+            value={panasz}
+            onChange={(e) => setPanasz(e.target.value)}
+            required
+          ></textarea>
         </div>
         <button type="submit">Hozzáadás</button>
       </form>
 
       <h2>Időpontok listája</h2>
-      <ul>
-        {appointments.map((appointment) => (
-          <li key={appointment.id}>
-            {appointment.doctor_name} - {appointment.patient_name} - {appointment.appointment_date} - {appointment.status}
-          </li>
-        ))}
-      </ul>
+      <div className="appointments-list">
+        <ul>
+          {appointments.map((appointment) => (
+            <li key={appointment.id}>
+              {appointment.orvosnev} - {appointment.betegneve} - {appointment.statusz} - {appointment.panasz}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

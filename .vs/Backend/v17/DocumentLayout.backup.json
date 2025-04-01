@@ -1,0 +1,245 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|c:\\users\\tanulo\\documents\\backend (1)\\backend\\backend\\controllers\\orvosokcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|solutionrelative:backend\\controllers\\orvosokcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|c:\\users\\tanulo\\documents\\backend (1)\\backend\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|solutionrelative:backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|c:\\users\\tanulo\\documents\\backend (1)\\backend\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|solutionrelative:backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|c:\\users\\tanulo\\documents\\backend (1)\\backend\\backend\\controllers\\newfolder\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|solutionrelative:backend\\controllers\\newfolder\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|c:\\users\\tanulo\\documents\\backend (1)\\backend\\backend\\models\\korhazcontexts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|solutionrelative:backend\\models\\korhazcontexts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|c:\\users\\tanulo\\documents\\backend (1)\\backend\\backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|solutionrelative:backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|c:\\users\\tanulo\\documents\\backend (1)\\backend\\backend\\controllers\\newfolder\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|solutionrelative:backend\\controllers\\newfolder\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|c:\\users\\tanulo\\documents\\backend (1)\\backend\\backend\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|solutionrelative:backend\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|c:\\users\\tanulo\\documents\\backend (1)\\backend\\backend\\controllers\\korhaziszemelyekcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|solutionrelative:backend\\controllers\\korhaziszemelyekcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|c:\\users\\tanulo\\documents\\backend (1)\\backend\\backend\\models\\korhaziszemelyek.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|solutionrelative:backend\\models\\korhaziszemelyek.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|c:\\users\\tanulo\\documents\\backend (1)\\backend\\backend\\models\\backenddtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|solutionrelative:backend\\models\\backenddtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|c:\\users\\tanulo\\documents\\backend (1)\\backend\\backend\\models\\orvos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|solutionrelative:backend\\models\\orvos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|c:\\users\\tanulo\\documents\\backend (1)\\backend\\backend\\controllers\\reactappcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35C7061D-D847-49B7-89E5-6E31CCD387CB}|Backend\\Backend.csproj|solutionrelative:backend\\controllers\\reactappcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AppointmentsController.cs",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Controllers\\NewFolder\\AppointmentsController.cs",
+              "RelativeDocumentMoniker": "Backend\\Controllers\\NewFolder\\AppointmentsController.cs",
+              "ToolTip": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Controllers\\NewFolder\\AppointmentsController.cs",
+              "RelativeToolTip": "Backend\\Controllers\\NewFolder\\AppointmentsController.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T08:39:10.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Appointment.cs",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Models\\Appointment.cs",
+              "RelativeDocumentMoniker": "Backend\\Models\\Appointment.cs",
+              "ToolTip": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Models\\Appointment.cs",
+              "RelativeToolTip": "Backend\\Models\\Appointment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T08:35:48.177Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BackendDTOs.cs",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Models\\BackendDTOs.cs",
+              "RelativeDocumentMoniker": "Backend\\Models\\BackendDTOs.cs",
+              "ToolTip": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Models\\BackendDTOs.cs",
+              "RelativeToolTip": "Backend\\Models\\BackendDTOs.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAADwvzUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T10:42:54.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "KorhazContexts.cs",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Models\\KorhazContexts.cs",
+              "RelativeDocumentMoniker": "Backend\\Models\\KorhazContexts.cs",
+              "ToolTip": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Models\\KorhazContexts.cs",
+              "RelativeToolTip": "Backend\\Models\\KorhazContexts.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAowCEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T10:56:15.526Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\appsettings.json",
+              "RelativeDocumentMoniker": "Backend\\appsettings.json",
+              "ToolTip": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\appsettings.json",
+              "RelativeToolTip": "Backend\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-17T11:02:25.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Program.cs",
+              "RelativeDocumentMoniker": "Backend\\Program.cs",
+              "ToolTip": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Program.cs",
+              "RelativeToolTip": "Backend\\Program.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAUwDAAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T10:26:03.301Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrvosokController.cs",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Controllers\\OrvosokController.cs",
+              "RelativeDocumentMoniker": "Backend\\Controllers\\OrvosokController.cs",
+              "ToolTip": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Controllers\\OrvosokController.cs",
+              "RelativeToolTip": "Backend\\Controllers\\OrvosokController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAADwvxUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T10:20:39.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Controllers\\NewFolder\\AuthController.cs",
+              "RelativeDocumentMoniker": "Backend\\Controllers\\NewFolder\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Controllers\\NewFolder\\AuthController.cs",
+              "RelativeToolTip": "Backend\\Controllers\\NewFolder\\AuthController.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAACYAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T09:06:28.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Backend\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Models\\User.cs",
+              "RelativeToolTip": "Backend\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T09:08:12.321Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "KorhaziSzemelyekController.cs",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Controllers\\KorhaziSzemelyekController.cs",
+              "RelativeDocumentMoniker": "Backend\\Controllers\\KorhaziSzemelyekController.cs",
+              "ToolTip": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Controllers\\KorhaziSzemelyekController.cs",
+              "RelativeToolTip": "Backend\\Controllers\\KorhaziSzemelyekController.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAswEgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T10:20:33.952Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "KorhaziSzemelyek.cs",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Models\\KorhaziSzemelyek.cs",
+              "RelativeDocumentMoniker": "Backend\\Models\\KorhaziSzemelyek.cs",
+              "ToolTip": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Models\\KorhaziSzemelyek.cs",
+              "RelativeToolTip": "Backend\\Models\\KorhaziSzemelyek.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T12:01:47.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Orvos.cs",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Models\\Orvos.cs",
+              "RelativeDocumentMoniker": "Backend\\Models\\Orvos.cs",
+              "ToolTip": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Models\\Orvos.cs",
+              "RelativeToolTip": "Backend\\Models\\Orvos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-17T11:02:42.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ReactAppController.cs",
+              "DocumentMoniker": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Controllers\\ReactAppController.cs",
+              "RelativeDocumentMoniker": "Backend\\Controllers\\ReactAppController.cs",
+              "ToolTip": "C:\\Users\\Tanulo\\Documents\\Backend (1)\\Backend\\Backend\\Controllers\\ReactAppController.cs",
+              "RelativeToolTip": "Backend\\Controllers\\ReactAppController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAhwAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T10:20:58.847Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

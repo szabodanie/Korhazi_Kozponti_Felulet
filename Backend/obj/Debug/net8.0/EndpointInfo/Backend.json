@@ -1,0 +1,202 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Backend",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/KorhaziSzemelyek": {
+      "get": {
+        "tags": [
+          "KorhaziSzemelyek"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/KorhaziSzemelyek"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/KorhaziSzemelyek"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/KorhaziSzemelyek"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Orvosok": {
+      "post": {
+        "tags": [
+          "Orvosok"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrvosCreateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrvosCreateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrvosCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orvos"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orvos"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Orvos"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Orvosok/{id}": {
+      "delete": {
+        "tags": [
+          "Orvosok"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "KorhaziSzemelyek": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "vezeteknev": {
+            "type": "string",
+            "nullable": true
+          },
+          "keresztnev": {
+            "type": "string",
+            "nullable": true
+          },
+          "panasz": {
+            "type": "string",
+            "nullable": true
+          },
+          "tbkartya": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "felhasznalonev": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Orvos": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vezeteknev": {
+            "type": "string",
+            "nullable": true
+          },
+          "keresztnev": {
+            "type": "string",
+            "nullable": true
+          },
+          "specialitas": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrvosCreateDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vezeteknev": {
+            "type": "string",
+            "nullable": true
+          },
+          "keresztnev": {
+            "type": "string",
+            "nullable": true
+          },
+          "specialitás": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

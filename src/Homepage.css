@@ -1,35 +1,43 @@
-/* src/css/homepage.css */
-
+/* Főcím stílus */
 .focim {
   text-align: center;
   font-size: 2.5rem;
   margin-top: 50px;
   color: #ff0000;
-  font-family:cursive;
+  font-family: cursive;
   font-family: 'Tektur', sans-serif;
 }
 
+/* Flexbox konténer, hogy középen legyenek az elemek */
 .wrap {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 10px; /* Hozzáadunk paddingot, hogy mobilon is ne legyen túl szűk */
+  flex-direction: column; /* Mobilon egymás alatt jelenjenek meg az elemek */
 }
 
+/* Overlay stílus */
 .overlay {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
+  width: 100%; /* 100%-ra állítjuk a szélességet */
+  max-width: 800px; /* Maximálisan 800px széles legyen a konténer */
+  margin: 0 auto; /* Középre igazítjuk */
 }
 
+/* Overlay szövegek */
 .overlay-content h1 {
-  color: #000000;
+  color: #ffffff;
 }
 
 .overlay-content p {
-  color: #000000;
+  color: #ffffff;
 }
 
+/* Kép konténer */
 .image-content {
   width: 100%;
   height: 300px;
@@ -37,9 +45,12 @@
   border-radius: 10px;
 }
 
+/* Pontok animációval */
 .dots {
   display: flex;
   justify-content: space-between;
+  gap: 10px; /* Kis távolságot adunk a pontok között */
+  margin-top: 20px;
 }
 
 .dot {
@@ -47,22 +58,85 @@
   height: 10px;
   background-color: #fff;
   border-radius: 50%;
-  animation: dotAnimation 3s;
-}
-.oldalszoveg{
-font-size:25px;
-font-family: 'Tektur', sans-serif;}
-.bentikep{
-width: 40%;
-height: auto;
-font-family: 'Tektur', Arial, sans-serif;
+  animation: dotAnimation 3s infinite;
 }
 
+/* Stílusok a képekhez */
+.oldalszoveg {
+  font-size: 25px;
+  font-family: 'Tektur', sans-serif;
+}
+
+.bentikep {
+  width: 40%;
+  height: auto;
+  font-family: 'Tektur', Arial, sans-serif;
+  max-width: 100%; /* Kép ne lépje túl a konténer szélességét */
+  display: block; /* Kép középre igazítása */
+  margin: 20px auto;
+}
+
+/* Animációk */
 @keyframes dotAnimation {
   0% { transform: scale(1); }
   50% { transform: scale(1.5); }
   100% { transform: scale(1); }
 }
-.p{
+
+.p {
   font-family: 'Tektur', Arial, sans-serif;
+}
+
+/* Reszponzív beállítások mobil nézetre */
+@media (max-width: 768px) {
+  .focim {
+    font-size: 1.8rem; /* Csökkentett szövegméret mobilon */
+    margin-top: 20px;
+  }
+
+  .wrap {
+    flex-direction: column; /* Mobilon a flex elemek oszlopban helyezkedjenek el */
+    padding: 5px;
+  }
+
+  .overlay {
+    padding: 15px;
+    margin: 10px;
+    width: 90%; /* 90%-os szélesség a mobilokon */
+  }
+
+  .image-content {
+    height: 200px; /* Kisebb képméret mobilon */
+  }
+
+  .bentikep {
+    width: 80%; /* A kép mobilon nagyobb legyen */
+  }
+
+  .dots {
+    justify-content: center; /* A pontokat középre igazítjuk mobilon */
+  }
+}
+
+/* Nagyobb mobil eszközökre */
+@media (max-width: 480px) {
+  .focim {
+    font-size: 1.5rem; /* Még kisebb cím mobilon */
+  }
+
+  .overlay {
+    padding: 10px;
+  }
+
+  .wrap {
+    padding: 2px;
+  }
+
+  .image-content {
+    height: 180px; /* Még kisebb kép mobilon */
+  }
+
+  .bentikep {
+    width: 100%; /* A kép teljes szélességben megjelenjen */
+  }
 }

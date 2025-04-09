@@ -12,40 +12,42 @@ function LoginPage() {
   const { setUser, setToken } = useContext(UserContext);
   const navigate = useNavigate();
 
-  // Handle login request
+  // Login művelet kezelése
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
     setNotification('');
 
     try {
-      // Bejelentkezési API hívás a backendhez
+      // API hívás bejelentkezésre
       const response = await axios.post('https://localhost:7159/api/Auth/login', {
         username: usernameOrEmail,
         password: password,
       });
 
-      // Válasz adatok kinyerése
       const { token, role, username } = response.data;
 
-      // Token és role tárolása a localStorage-ban
+      // Token és jogosultság mentése a localStorage-ba
       localStorage.setItem('token', token);
       localStorage.setItem('role', role);
       localStorage.setItem('username', username);
 
-      // Felhasználói adatok beállítása a UserContext-ben
+      // UserContext frissítése
       setUser({ username, role });
       setToken(token);
 
+      // Sikeres bejelentkezés visszajelzése
       setNotification('Sikeres bejelentkezés!');
 
-      // Role alapján navigálás
-      if (role === 'doctor') {
-        navigate('/admin-dashboard'); // Admin oldal, csak orvosoknak
+      // Jogosultság alapú navigáció
+      if (role === 'admin') {
+        navigate('/admin-dashboard'); // Admin felület
+      } else if (role === 'doctor') {
+        navigate('/doctor-dashboard'); // Orvosi felület
       } else if (role === 'user') {
-        navigate('/user-dashboard'); // Felhasználói oldal
+        navigate('/'); // Általános felhasználói felület
       } else {
-        setError('Nem megfelelő jogosultság!');
+        setError('Nincs megfelelő jogosultság!');
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Hibás felhasználónév, e-mail cím vagy jelszó!');
@@ -92,11 +94,10 @@ function LoginPage() {
         Nincs fiókod? <Link to="/regisztracio">Regisztrálj itt</Link>
       </p>
 
-      {/* Üzenet az adminoknak */}
-      <p className="doctor-login-info">
-        Admin (orvos) bejelentkezés:
-        <Link to="/admin-dashboard" className="doctor-login-link">
-          Orvosi bejelentkezés itt
+      <p className="mt-3">
+        Admin felület:
+        <Link to="/admin-dashboard" className="admin-login-link">
+          Admin bejelentkezés itt
         </Link>
       </p>
     </div>

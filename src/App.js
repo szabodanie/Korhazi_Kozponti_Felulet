@@ -15,6 +15,7 @@ import FloatingSquares from './FloatingSquares';
 import './assets/fonts/Tektur-Regular.ttf';
 
 
+
 function App() {
   const [icons, setIcons] = useState([]);
 
@@ -52,8 +53,9 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/regisztracio" element={<RegistPage />} />
             <Route path="/terms" element={<TermsPage />} />
-            <Route path="/admin" element={<AdminPage />} />
             <Route path="/doctor-login" element={<DoctorLoginPage />} />
+            <Route path="/" element={<HomePage />} />
+        <Route path="/admin-dashboard" element={<AdminPage />} />
           </Routes>
 
         </div>

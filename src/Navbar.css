@@ -1,11 +1,37 @@
-/* Alapstílus a navigációhoz */
+/* Navigációs sáv alap stílusa */
 nav {
   background-color: #333;
   background-image: url('../src/navkep2.png');
+  background-size: cover;
+  background-position: left center;
   border-bottom: 5px solid #000;
-  padding: 0px;
+  padding: 0;
+  height: 60px; /* Az alap navbar magasság */
+  display: flex;
+  justify-content: space-between; /* A tartalom szétosztása balra és jobbra */
+  align-items: center; /* Középre igazítás vertikálisan */
+  padding: 0 20px;
 }
 
+/* A felhasználói ikon */
+.user-icon {
+  width: 40px;  /* A profilkép szélessége */
+  height: 40px;  /* A profilkép magassága */
+  border-radius: 50%;  /* Kerek alakú kép */
+  object-fit: cover;  /* A kép ne torzuljon */
+  margin-right: 10px;  /* A profilkép és a felhasználói név közötti távolság */
+}
+
+/* A bal oldali felhasználói szekció */
+.user-section {
+  display: flex;
+  align-items: center;
+  margin-left: 0; /* A felhasználói szekció most balra kerül */
+  color: white; /* A felhasználói szöveg fehér színű lesz */
+  font-size: 16px;
+}
+
+/* Az ul elemek stílusa */
 ul {
   list-style-type: none;
   margin: 0;
@@ -13,11 +39,15 @@ ul {
   display: flex;
   justify-content: center;
   gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 1; /* A menüpontokat balra igazítja */
 }
 
+/* A menüpontok elemeinek stílusa */
 li {
   position: relative;
-  padding: 0px 0px;
+  padding: 0;
   border-left: 1px solid #bbb;
 }
 
@@ -26,115 +56,99 @@ li a,
   display: block;
   color: white;
   text-decoration: none;
-  font-size: 18px;
-  padding: 14px 16px;
+  font-size: 16px;  /* Normál betűméret */
+  padding: 12px 16px; /* Normál padding */
   transition: color 0.3s ease-in-out;
   font-family: 'Tektur', sans-serif;
+  text-align: center; /* Középre igazítja a linkeket */
 }
 
-/* Hover effekt: alatta megjelenik egy növekvő vonal */
-li a::after,
-.nav-link-button::after {
-  display: block;
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background-color: red;
-  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+/* Reszponzív beállítások mobil nézethez */
+@media screen and (max-width: 768px) {
+  nav {
+    height: 50px;  /* Mobilon kisebb navbar magasság */
+    padding: 0 10px; /* Kisebb padding mobil nézethez */
+  }
+
+  ul {
+    flex-direction: column;  /* Vertikális elrendezés */
+    gap: 8px; /* Csökkentett távolság a menüpontok között */
+  }
+
+  li {
+    border-left: none;  /* Mobilon ne legyen bal oldali vonal */
+    width: 100%;  /* Az elemek kitöltik a sávot */
+    text-align: center;  /* A szöveg középre igazítása */
+  }
+
+  li a,
+  .nav-link-button {
+    font-size: 14px;  /* Kisebb betűméret mobil nézethez */
+    padding: 10px 12px; /* Kisebb padding mobil nézethez */
+  }
+
+  /* Profilkép és felhasználó név */
+  .user-section {
+    display: flex;
+    align-items: center;
+    margin-left: 0; /* Balra igazítva */
+    font-size: 14px;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+  }
+
+  .user-icon {
+    width: 28px;  /* Kisebb profilkép mobilon */
+    height: 28px;
+  }
 }
 
-li a:hover::after,
-.nav-link-button:hover::after {
-  width: 112%;
-  left: 0;
-}
+@media screen and (max-width: 480px) {
+  nav {
+    height: 50px;  /* További csökkentés mobil nézethez */
+  }
 
-li a:hover,
-.nav-link-button:hover {
-  
-}
+  li a,
+  .nav-link-button {
+    font-size: 12px;  /* Még kisebb betűméret mobilon */
+    padding: 8px 10px;  /* Kisebb padding */
+  }
 
-/* Kijelentkezés gomb stílus */
-.nav-link-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  position: relative;
-  padding: 14px 16px;
-  transition: color 0.3s ease-in-out;
-}
+  .user-icon {
+    width: 24px;  /* Még kisebb profilkép mobilon */
+    height: 24px;
+  }
 
-/* Jobb oldalra igazított elemek */
-.right {
-  margin-left: auto;
-}
-
-/* Bejelentkezés és regisztráció közötti elválasztás */
-.bordered {
-  border-left: 1px solid #bbb;
-}
-
-/* Felhasználói profilkép stílusai */
-/* Jobbra igazított felhasználónév */
-/* Felhasználónév és ikon jobb oldalra igazítása */
-.user-section {
-  margin-left: auto; /* Helyezze a jobb szélére */
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: white;
-  font-size: 18px;
-}
-
-.user-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  .user-info {
+    font-size: 12px;  /* Még kisebb felhasználói név */
+  }
 }
 
 /* Dropdown menü stílusai */
 .dropdown-menu {
-  display: none;
   position: absolute;
   top: 100%;
-  right: 0;
-  background-color: rgb(43, 43, 43);
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  min-width: 160px;
-  z-index: 1;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  border: 1px solid #ccc;
+  display: none;
+}
+
+.dropdown-menu button {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .user-section:hover .dropdown-menu {
   display: block;
-}
-
-.dropdown-menu .nav-link-button {
-  width: 100%;
-  text-align: left;
-  padding: 12px 16px;
-  border: none;
-  cursor: pointer;
-  background-color: rgb(72, 72, 72);
-}
-
-.dropdown-menu .nav-link-button:hover {
-  background-color: #595959;
-}
-.disabled-link {
-  color: #aaa; /* Gray color */
-  pointer-events: none; /* Prevent clicking */
-}
-
-.disabled-link:hover {
-  color: #aaa; /* Prevent hover effect on disabled links */
 }

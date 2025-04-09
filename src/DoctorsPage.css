@@ -1,13 +1,15 @@
-/* DoctorsPage.css */
+/* DoctorsPage alap stílus */
 .DoctorsPage {
     text-align: center;
     font-family: 'Tektur', Arial, sans-serif;
 }
 
+/* Szűrő gombok stílusa */
 .filter-buttons {
     margin-bottom: 16px;
 }
 
+/* Szűrő gombok alap stílusa */
 .filter-buttons button {
     margin: 0 8px;
     padding: 8px 16px;
@@ -18,10 +20,12 @@
     cursor: pointer;
 }
 
+/* Gomb hover állapot */
 .filter-buttons button:hover {
     background-color: #a30000;
 }
 
+/* Kártyák konténerének elrendezése */
 .card-container {
     display: flex;
     justify-content: center;
@@ -30,42 +34,42 @@
     padding: 16px;
 }
 
-/* Card.css */
-.card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 16px;
-    max-width: 300px;
-    text-align: center;
-}
+/* Reszponzív beállítások telefonokra */
+@media (max-width: 768px) {
+    /* Szűrő gombok elrendezése mobilon: teljes szélességűek és oszlopba rendezve */
+    .filter-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%; /* Gombok kitöltik az egész szülőkonténert */
+    }
 
-.card img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-}
+    /* A gombok szélességét mobilon növeljük */
+    .filter-buttons button {
+        width: 100%; /* A gombok teljes szélességűek lesznek */
+        margin-bottom: 8px; /* Margin a gombok között */
+        padding: 12px; /* Kisebb padding */
+    }
 
-.card h2 {
-    font-size: 1.25em;
-    margin: 16px 0 8px;
-}
+    /* Kártyák konténerének elrendezése mobilon */
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
 
-.card p {
-    font-size: 1em;
-    color: #666;
-}
+    /* Kártyák reszponzív szélessége */
+    .card {
+        max-width: 90%; /* A kártyák szélessége csökkenjen mobilon */
+        margin: 8px 0; /* Kisebb margó mobilon */
+    }
 
-.card-content button {
-    margin-top: 8px;
-    padding: 8px 16px;
-    background-color: #cc0000;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+    /* Kártyák címének kisebb betűméret mobilon */
+    .card-title {
+        font-size: 1.25em; /* Kisebb betűméret */
+    }
 
-.card-content button:hover {
-    background-color: #a30000;
+    /* Kártyák leírásának kisebb betűméret mobilon */
+    .card-description {
+        font-size: 0.9em; /* Kisebb betűméret */
+    }
 }

@@ -8,10 +8,11 @@ function AppointmentPage() {
   const [statusz, setStatusz] = useState('Függőben');
   const [panasz, setPanasz] = useState('');
   const [appointments, setAppointments] = useState([]);
+  const role = localStorage.getItem('role')
 
   // API-ból való adatok lekérése
   useEffect(() => {
-    axios.get('http://localhost:5000/api/Appointments') // Backend URL
+    axios.get('https://localhost:7159/api/Appointments') // Backend URL
       .then((response) => {
         setAppointments(response.data);
       })
@@ -89,7 +90,9 @@ function AppointmentPage() {
         <button type="submit">Hozzáadás</button>
       </form>
 
-      <h2>Időpontok listája</h2>
+{role === "admin" ? (
+<div>
+  <h2>Időpontok listája</h2>
       <div className="appointments-list">
         <ul>
           {appointments.map((appointment) => (
@@ -99,6 +102,9 @@ function AppointmentPage() {
           ))}
         </ul>
       </div>
+</div>
+) : null}
+      
     </div>
   );
 }

@@ -3,21 +3,39 @@ import './Appointment.css';
 import axios from 'axios';
 
 function AppointmentPage() {
-  const [orvosnev, setOrvosnev] = useState('');
-  const [betegneve, setBetegneve] = useState('');
-  const [statusz, setStatusz] = useState('Függőben');
-  const [panasz, setPanasz] = useState('');
+  const [doctorName, setDoctorName] = useState('');
+  const [patientName, setPatientName] = useState('');
+  const [status, setStatus] = useState('Függőben');
+  const [complaint, setComplaint] = useState('');
   const [appointments, setAppointments] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [doctors, setDoctors] = useState([]);
   const role = localStorage.getItem('role')
 
   // API-ból való adatok lekérése
   useEffect(() => {
-    axios.get('https://localhost:7159/api/Appointments') // Backend URL
+    setIsLoading(true);
+    axios.get(`${process.env.REACT_APP_API_URL}/api/Appointments`)
       .then((response) => {
         setAppointments(response.data);
       })
       .catch((error) => {
         console.error('Hiba történt:', error);
+        setError('Nem sikerült betölteni az időpontokat.');
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_API_URL}/api/Orvosok`)
+      .then((response) => {
+        setDoctors(response.data);
+      })
+      .catch((error) => {
+        console.error('Nem sikerült lekérni az orvosokat:', error);
       });
   }, []);
 
@@ -25,19 +43,21 @@ function AppointmentPage() {
     e.preventDefault();
 
     const newAppointment = {
-      orvosnev: orvosnev,
-      betegneve: betegneve,
-      statusz: statusz,
-      panasz: panasz,
+      orvosnev: doctorName,
+      betegneve: patientName,
+      statusz: status,
+      panasz: complaint,
     };
 
-    axios.post('https://localhost:7159/api/Appointments', newAppointment) // Backend URL
+    axios.post(`${process.env.REACT_APP_API_URL}/api/Appointments`, newAppointment)
       .then((response) => {
+        console.log(response);
+        
         setAppointments([...appointments, response.data]);
-        setOrvosnev('');
-        setBetegneve('');
-        setStatusz('Függőben');
-        setPanasz('');
+        setDoctorName('');
+        setPatientName('');
+        setStatus('Függőben');
+        setComplaint('');
       })
       .catch((error) => {
         console.error('Hiba történt:', error);
@@ -45,32 +65,45 @@ function AppointmentPage() {
   };
 
   return (
-    <div className="appointment-container">
-      <h1>Időpont hozzáadása</h1>
+    <div className="appointment-container glass-bg">
+      <h1 className="section-title">Időpont hozzáadása</h1>
       <form onSubmit={handleAddAppointment} className="appointment-form">
-        <div>
+        <div className="form-group">
           <label>Orvos neve:</label>
-          <input
-            type="text"
-            value={orvosnev}
-            onChange={(e) => setOrvosnev(e.target.value)}
+          {doctors.length === 0 ? (
+            <input
+              type="text"
+              value={doctorName}
+              onChange={(e) => setDoctorName(e.target.value)}
+              required
+            />
+          ) : (
+          <select
+            value={doctorName}
+            onChange={(e) => setDoctorName(e.target.value)}
             required
-          />
+          >
+            <option value="">-- Válassz orvost --</option>
+            {doctors.map((doc) => (
+              <option key={doc.id} value={`${doc.vezeteknev} ${doc.keresztnev}`}>{`${doc.vezeteknev} ${doc.keresztnev}`}</option>
+            ))}
+          </select>
+          )}
         </div>
-        <div>
+        <div className="form-group">
           <label>Beteg neve:</label>
           <input
             type="text"
-            value={betegneve}
-            onChange={(e) => setBetegneve(e.target.value)}
+            value={patientName}
+            onChange={(e) => setPatientName(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label>Statusz:</label>
+        <div className="form-group">
+          <label>Státusz:</label>
           <select
-            value={statusz}
-            onChange={(e) => setStatusz(e.target.value)}
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
             required
           >
             <option value="Függőben">Függőben</option>
@@ -78,33 +111,43 @@ function AppointmentPage() {
             <option value="Törölve">Törölve</option>
           </select>
         </div>
-        <label>Panasz:</label>
-        <div>
-          
+        <div className="form-group">
+          <label>Panasz:</label>
           <textarea
-            value={panasz}
-            onChange={(e) => setPanasz(e.target.value)}
+            value={complaint}
+            onChange={(e) => setComplaint(e.target.value)}
             required
           ></textarea>
         </div>
         <button type="submit">Hozzáadás</button>
       </form>
 
-{role === "admin" ? (
-<div>
-  <h2>Időpontok listája</h2>
-      <div className="appointments-list">
-        <ul>
-          {appointments.map((appointment) => (
-            <li key={appointment.id}>
-              {appointment.orvosnev} - {appointment.betegneve} - {appointment.statusz} - {appointment.panasz}
-            </li>
-          ))}
-        </ul>
-      </div>
-</div>
-) : null}
-      
+      {role.toLowerCase() === "admin" ? (
+        <div>
+          <h2 className="section-title">Időpontok listája</h2>
+          {isLoading && <p className="loading">Adatok betöltése...</p>}
+          {error && <p className="error">{error}</p>}
+          {!isLoading && !error && appointments.length === 0 && (
+            <p className="no-data">Nincsenek időpontok.</p>
+          )}
+          <div className="appointments-list">
+            {appointments.map((appointment) => (
+              <div className="appointment-card" key={appointment.id}>
+                <div className="appointment-header">
+                  <strong>{appointment.orvosnev}</strong> &mdash; {appointment.betegneve}
+                </div>
+                <div className={`status-badge ${appointment.statusz.toLowerCase()}`}>
+                  {appointment.statusz}
+                </div>
+                <div className="complaint">
+                  <strong>Panasz:</strong> {appointment.panasz}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
+
     </div>
   );
 }

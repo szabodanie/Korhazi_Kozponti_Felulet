@@ -2,94 +2,90 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from './UserContext';
 import './Navbar.css';
-import icon from './iconorv.png';
+import icon from './assets/iconorv.png';
 
 function Navbar() {
   const { user, logout } = useContext(UserContext);
   const navigate = useNavigate();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
     navigate('/'); // Kijelentkezés után navigálás a főoldalra
+    setMobileMenuOpen(false);
   };
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
-  // Helper function a linkek engedélyezésére
-  const isLinkDisabled = (user) => !user;
+  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
   return (
     <nav>
-      <ul>
+      <div className="hamburger" onClick={toggleMobileMenu}>
+        ☰
+      </div>
+
+      <ul className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
         <li>
-          <Link to="/">Főoldal</Link>
+          <Link to="/" onClick={() => setMobileMenuOpen(false)}>Főoldal</Link>
         </li>
 
-        {/* Orvosaink csak bejelentkezett felhasználóknak */}
-        <li>
-          <Link 
-            to="/orvosaink"
-            className={isLinkDisabled(user) ? 'disabled-link' : ''}
-            style={{ pointerEvents: isLinkDisabled(user) ? 'none' : 'auto' }}
-          >
-            Orvosaink
-          </Link>
-        </li>
+        {/* Orvosaink, Időpontfoglalás csak bejelentkezett felhasználóknak */}
+        {user && (
+          <>
+            <li>
+              <Link
+                to="/orvosaink"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Orvosaink
+              </Link>
+            </li>
 
-        {/* Időpontfoglalás csak bejelentkezett felhasználóknak */}
-        <li>
-          <Link 
-            to="/adatbazis"
-            className={isLinkDisabled(user) ? 'disabled-link' : ''}
-            style={{ pointerEvents: isLinkDisabled(user) ? 'none' : 'auto' }}
-          >
-            Időpontfoglalás
-          </Link>
-        </li>
+            <li>
+              <Link
+                to="/adatbazis"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Időpontfoglalás
+              </Link>
+            </li>
+          </>
+        )}
 
         {user ? (
           <>
             {/* Admin-specifikus menüpontok */}
-            {user.role === 'Admin' && (
+            {user.role.toLowerCase() === 'admin' && (
               <>
                 <li>
-                  <Link to="/admin-dashboard">Admin Dashboard</Link>
-                </li>
-                <li>
-                  <Link to="/admin-users">Felhasználók kezelése</Link>
+                  <Link to="/admin-dashboard" onClick={() => setMobileMenuOpen(false)}>Admin Dashboard</Link>
                 </li>
               </>
             )}
             {/* Felhasználói ikon és kijelentkezés */}
-            <li
-              className="user-section"
-              onMouseEnter={toggleDropdown}
-              onMouseLeave={toggleDropdown}
-            >
-              <span className="user-info">
+            <li className="user-section">
+              <span className="user-info" onClick={toggleDropdown}>
                 <img src={icon} alt="Felhasználó ikon" className="user-icon" />
                 {user.username}
               </span>
-              {dropdownOpen && (
-                <div className="dropdown-menu">
-                  <button onClick={handleLogout} className="nav-link-button">
-                    Kijelentkezés
-                  </button>
-                </div>
-              )}
+
+              <div className={`dropdown-menu ${dropdownOpen ? 'show' : ''}`}>
+                <button onClick={handleLogout} className="nav-link-button">Kijelentkezés</button>
+              </div>
             </li>
           </>
         ) : (
           <>
             {/* Bejelentkezés és regisztráció vendégek számára */}
             <li>
-              <Link to="/bejelentkezes">Bejelentkezés</Link>
+              <Link to="/bejelentkezes" onClick={() => setMobileMenuOpen(false)}>Bejelentkezés</Link>
             </li>
             <li>
-              <Link to="/regisztracio">Regisztráció</Link>
+              <Link to="/regisztracio" onClick={() => setMobileMenuOpen(false)}>Regisztráció</Link>
             </li>
           </>
         )}

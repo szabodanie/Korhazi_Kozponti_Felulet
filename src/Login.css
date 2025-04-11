@@ -4,11 +4,13 @@
   margin: 0 auto;
   padding: 20px;
   border: 3px solid #ff0000;
-  background-image: url('../src/kartyahatter.png');
+  background-image: url('./assets/kartyahatter.png');
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   color: #ff0000;
   font-family: 'Tektur', Arial, sans-serif;
+  margin-top: 10px;
+  font-size: 0.95rem;
 }
 
 h2 {
@@ -34,10 +36,6 @@ input.form-control {
   margin-bottom: 15px;
 }
 
-button {
-  background-color: red;
-}
-
 .form-label {
   display: block;
   margin-bottom: 5px;
@@ -52,7 +50,7 @@ button {
   border-radius: 5px;
 }
 
-.btn {
+.login-container .loginBtn {
   display: inline-block;
   width: 100%;
   padding: 10px;
@@ -61,6 +59,11 @@ button {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  background-color: transparent;
+}
+
+.login-container .loginBtn:hover {
+  color: rgb(212, 48, 48);
 }
 
 .notification {
@@ -70,32 +73,18 @@ button {
   margin-top: 10px;
 }
 
-.login-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-
-.login-page input {
-  padding: 10px;
-  margin: 5px 0;
-  width: 100%;
-  max-width: 300px;
-  box-sizing: border-box;
-}
-
-.login-page button {
-  padding: 10px 20px;
+.error {
+  color: red;
+  text-align: center;
+  font-weight: bold;
   margin-top: 10px;
-  background-color: #ff0000;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
-button {
-  color: #ff0000;
+.loading {
+  color: gray;
+  font-style: italic;
+  text-align: center;
+  margin-top: 10px;
 }
 
 .terms {
@@ -116,51 +105,42 @@ button {
 @media (max-width: 768px) {
   /* A login container szélessége csökken mobilon */
   .login-container {
-      width: 90%; /* 90%-ra csökkentjük a szélességet */
-      padding: 16px; /* Kisebb padding */
+      width: 90%;
+      padding: 16px;
   }
 
   /* H2 méretének csökkentése mobilra */
   h2 {
-      font-size: 1.5em; /* Kisebb betűméret mobilon */
+      font-size: 1.5em;
   }
 
   /* Kép és háttér szépítése, hogy illeszkedjen mobilra */
   .login-container {
-      background-size: cover; /* A háttérképet úgy jelenítjük meg, hogy kitöltse a területet */
-      background-position: center; /* Középre igazítjuk */
+      background-size: cover;
+      background-position: center;
   }
 
   /* Input mezők szélességét és paddingját módosítjuk */
   .form-control {
-      padding: 8px; /* Kisebb padding mobilra */
-      font-size: 14px; /* Kisebb betűméret */
+      padding: 8px;
+      font-size: 14px;
   }
 
   /* Gombok szélességét a szülőhöz igazítjuk */
-  .btn {
+  .login-container .loginBtn {
       width: 100%;
       padding: 12px;
-      font-size: 14px; /* Kisebb betűméret mobilra */
-  }
-
-  .login-page input {
-      max-width: 100%;
-      width: 100%; /* A mezők szélességét 100%-ra állítjuk */
-  }
-
-  .login-page button {
-      width: 100%; /* Gombok szélességét 100%-ra állítjuk */
+      font-size: 14px;
   }
 
   /* A terms checkboxhoz és labelhez is rugalmas beállítást adunk */
   .terms {
-      flex-direction: column; /* A checkbox és label egymás alatt legyen */
+      flex-direction: column;
       align-items: flex-start;
   }
 
   .terms input {
       margin-right: 0;
-      margin-bottom: 8px; /* Kisebb margó a checkbox és label között */
+      margin-bottom: 8px;
   }
 }

@@ -1,16 +1,32 @@
-.wrapper span {
+.wrapper {
+    position: relative;
+    z-index: -1;
+}
+
+.wrapper .item {
     position: fixed;
     bottom: -180px;
     height: 50px;
     width: 50px;
     z-index: -1;
-    background-size: cover; /* A háttérkép kitöltése */
-    background-repeat: no-repeat; /* A kép ne ismétlődjön */
-    background-color: white; /* A háttér színe fehér */
-    border-radius: 50%; /* A formák kör alakúak legyenek */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: white;
+    border-radius: 50%;
     box-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff, 0 0 200px #0072ff;
     animation: animate 10s linear infinite;
 }
+
+.item-1 { left: 60px; animation-delay: 0.6s; }
+.item-2 { left: 10%; animation-delay: 3s; width: 60px; height: 60px; }
+.item-3 { left: 20%; animation-delay: 2s; }
+.item-4 { left: 30%; animation-delay: 5s; width: 80px; height: 80px; }
+.item-5 { left: 40%; animation-delay: 1s; }
+.item-6 { left: 50%; animation-delay: 7s; }
+.item-7 { left: 60%; animation-delay: 6s; width: 100px; height: 100px; }
+.item-8 { left: 70%; animation-delay: 8s; }
+.item-9 { left: 80%; animation-delay: 6s; width: 90px; height: 90px; }
+.item-10 { left: 90%; animation-delay: 4s; }
 
 .wrapper span:nth-child(1) {
     left: 60px;

@@ -1,75 +1,71 @@
-/* DoctorsPage alap stílus */
-.DoctorsPage {
-    text-align: center;
+/* Új orvos hozzáadása form stílus */
+.add-doctor-form {
+    max-width: 500px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     font-family: 'Tektur', Arial, sans-serif;
-}
-
-/* Szűrő gombok stílusa */
-.filter-buttons {
-    margin-bottom: 16px;
-}
-
-/* Szűrő gombok alap stílusa */
-.filter-buttons button {
-    margin: 0 8px;
-    padding: 8px 16px;
+  }
+  
+  .add-doctor-form h2 {
+    margin-bottom: 15px;
+    color: #a30000;
+  }
+  
+  .add-doctor-form input,
+  .add-doctor-form select,
+  .add-doctor-form button {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: 'Tektur', Arial, sans-serif;
+    font-size: 15px;
+  }
+  
+  .add-doctor-form input[type="file"] {
+    border: none;
+  }
+  
+  .add-doctor-form button {
     background-color: #cc0000;
     color: white;
-    border: none;
-    border-radius: 4px;
+    font-weight: bold;
     cursor: pointer;
-}
-
-/* Gomb hover állapot */
-.filter-buttons button:hover {
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .add-doctor-form button:hover {
     background-color: #a30000;
-}
-
-/* Kártyák konténerének elrendezése */
-.card-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    padding: 16px;
-}
-
-/* Reszponzív beállítások telefonokra */
-@media (max-width: 768px) {
-    /* Szűrő gombok elrendezése mobilon: teljes szélességűek és oszlopba rendezve */
-    .filter-buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%; /* Gombok kitöltik az egész szülőkonténert */
+  }
+  
+  /* Betöltés és üzenetek */
+  .success-message {
+    text-align: center;
+    margin: 10px auto;
+    font-weight: bold;
+    font-family: 'Tektur', Arial, sans-serif;
+    color: green;
+  }
+  
+  /* Reszponzív formázás */
+  @media (max-width: 768px) {
+    .add-doctor-form {
+      width: 90%;
+      padding: 16px;
     }
-
-    /* A gombok szélességét mobilon növeljük */
-    .filter-buttons button {
-        width: 100%; /* A gombok teljes szélességűek lesznek */
-        margin-bottom: 8px; /* Margin a gombok között */
-        padding: 12px; /* Kisebb padding */
+  
+    .add-doctor-form h2 {
+      font-size: 1.2rem;
     }
-
-    /* Kártyák konténerének elrendezése mobilon */
-    .card-container {
-        flex-direction: column;
-        align-items: center;
+  
+    .add-doctor-form input,
+    .add-doctor-form button {
+      font-size: 14px;
     }
-
-    /* Kártyák reszponzív szélessége */
-    .card {
-        max-width: 90%; /* A kártyák szélessége csökkenjen mobilon */
-        margin: 8px 0; /* Kisebb margó mobilon */
-    }
-
-    /* Kártyák címének kisebb betűméret mobilon */
-    .card-title {
-        font-size: 1.25em; /* Kisebb betűméret */
-    }
-
-    /* Kártyák leírásának kisebb betűméret mobilon */
-    .card-description {
-        font-size: 0.9em; /* Kisebb betűméret */
-    }
-}
+  }
+  

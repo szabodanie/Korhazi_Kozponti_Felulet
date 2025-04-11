@@ -1,34 +1,54 @@
 /* Navigációs sáv alap stílusa */
 nav {
   background-color: #333;
-  background-image: url('../src/navkep2.png');
+  background-image: url('./assets/navkep2.png');
   background-size: cover;
   background-position: left center;
   border-bottom: 5px solid #000;
   padding: 0;
-  height: 60px; /* Az alap navbar magasság */
+  height: 60px;
   display: flex;
-  justify-content: space-between; /* A tartalom szétosztása balra és jobbra */
-  align-items: center; /* Középre igazítás vertikálisan */
+  justify-content: space-between;
+  align-items: center;
   padding: 0 20px;
+}
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  padding: 10px;
+}
+
+.hamburger:hover {
+  color: #ff6666;
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
 }
 
 /* A felhasználói ikon */
 .user-icon {
-  width: 40px;  /* A profilkép szélessége */
-  height: 40px;  /* A profilkép magassága */
-  border-radius: 50%;  /* Kerek alakú kép */
-  object-fit: cover;  /* A kép ne torzuljon */
-  margin-right: 10px;  /* A profilkép és a felhasználói név közötti távolság */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
 }
 
 /* A bal oldali felhasználói szekció */
 .user-section {
+  position: relative;
   display: flex;
   align-items: center;
-  margin-left: 0; /* A felhasználói szekció most balra kerül */
-  color: white; /* A felhasználói szöveg fehér színű lesz */
+  margin-left: 0;
+  color: white;
   font-size: 16px;
+  font-family: 'Tektur', Arial, sans-serif;
 }
 
 /* Az ul elemek stílusa */
@@ -41,13 +61,13 @@ ul {
   gap: 16px;
   flex-wrap: wrap;
   align-items: center;
-  flex: 1; /* A menüpontokat balra igazítja */
+  flex: 1;
 }
 
 /* A menüpontok elemeinek stílusa */
 li {
   position: relative;
-  padding: 0;
+  padding: 5px;
   border-left: 1px solid #bbb;
 }
 
@@ -56,99 +76,156 @@ li a,
   display: block;
   color: white;
   text-decoration: none;
-  font-size: 16px;  /* Normál betűméret */
-  padding: 12px 16px; /* Normál padding */
+  font-size: 16px; 
+  padding: 12px 16px;
   transition: color 0.3s ease-in-out;
   font-family: 'Tektur', sans-serif;
-  text-align: center; /* Középre igazítja a linkeket */
+  text-align: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 25px;
+  transition: background-color 0.3s;
+}
+
+.user-info:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Reszponzív beállítások mobil nézethez */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) {
   nav {
-    height: 50px;  /* Mobilon kisebb navbar magasság */
-    padding: 0 10px; /* Kisebb padding mobil nézethez */
+    height: 50px;
+    padding: 0 10px;
   }
 
   ul {
-    flex-direction: column;  /* Vertikális elrendezés */
-    gap: 8px; /* Csökkentett távolság a menüpontok között */
+    flex-direction: column;
+    gap: 8px;
   }
 
   li {
-    border-left: none;  /* Mobilon ne legyen bal oldali vonal */
-    width: 100%;  /* Az elemek kitöltik a sávot */
-    text-align: center;  /* A szöveg középre igazítása */
+    border-left: none;
+    width: 100%;
+    text-align: center;
   }
 
   li a,
   .nav-link-button {
-    font-size: 14px;  /* Kisebb betűméret mobil nézethez */
-    padding: 10px 12px; /* Kisebb padding mobil nézethez */
+    font-size: 14px;
+    padding: 10px 12px;
   }
 
   /* Profilkép és felhasználó név */
   .user-section {
     display: flex;
     align-items: center;
-    margin-left: 0; /* Balra igazítva */
+    margin-left: 0;
     font-size: 14px;
   }
 
-  .user-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: white;
-  }
 
   .user-icon {
-    width: 28px;  /* Kisebb profilkép mobilon */
+    width: 28px;
     height: 28px;
   }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+    width: 100%;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    z-index: 100;
+    padding: 10px 0;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .dropdown-menu {
+    right: 10px;
+    min-width: 130px;
+  }
+
 }
 
 @media screen and (max-width: 480px) {
   nav {
-    height: 50px;  /* További csökkentés mobil nézethez */
+    height: 50px;
   }
 
   li a,
   .nav-link-button {
-    font-size: 12px;  /* Még kisebb betűméret mobilon */
-    padding: 8px 10px;  /* Kisebb padding */
+    font-size: 12px; 
+    padding: 8px 10px;
   }
 
   .user-icon {
-    width: 24px;  /* Még kisebb profilkép mobilon */
+    width: 24px;
     height: 24px;
   }
 
   .user-info {
-    font-size: 12px;  /* Még kisebb felhasználói név */
+    font-size: 12px;
   }
 }
 
 /* Dropdown menü stílusai */
 .dropdown-menu {
   position: absolute;
+  background-color: none !important;
+  padding: 0 !important;
+  border: none !important;
   top: 100%;
-  left: 0;
-  width: 100%;
-  background-color: #333;
-  border: 1px solid #ccc;
-  display: none;
+  right: 0;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .dropdown-menu button {
-  background-color: red;
-  color: white;
-  padding: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: #dc3545;
   border: none;
-  border-radius: 4px;
+  color: white;
+  font-family: 'Tektur', Arial, sans-serif;
+  padding: 10px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.2s ease-in-out;
 }
 
-.user-section:hover .dropdown-menu {
-  display: block;
+.dropdown-menu button:hover {
+  background-color: #a30000;
 }

@@ -20,7 +20,7 @@ function LoginPage() {
 
     try {
       // API hívás bejelentkezésre
-      const response = await axios.post('https://localhost:7159/api/Auth/login', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/Auth/login`, {
         username: usernameOrEmail,
         password: password,
       });
@@ -82,7 +82,7 @@ function LoginPage() {
             required
           />
         </div>
-        <button type="submit" className="btn w-100" style={{ color: 'red' }}>
+        <button type="submit" className="loginBtn w-100" >
           Bejelentkezés
         </button>
       </form>
@@ -95,7 +95,6 @@ function LoginPage() {
       </p>
 
       <p className="mt-3">
-        Admin felület:
         <Link to="/admin-dashboard" className="admin-login-link">
           Admin bejelentkezés itt
         </Link>

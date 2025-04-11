@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import './registpage.css';
+import './Registpage.css';
 import axios from 'axios';
 
 function RegisterPage() {
@@ -27,7 +27,7 @@ function RegisterPage() {
 
     // API hívás a backendhez
     try {
-      const response = await axios.post('https://localhost:7159/api/Auth/register', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/Auth/register`, {
         username,
         email,
         password,
@@ -35,12 +35,17 @@ function RegisterPage() {
         specialty: role === 'admin' ? specialty : null, // Specialty csak admin esetén
       });
 
+      
+      
+
       setNotification(response.data.message); // Sikeres üzenet
       setTimeout(() => {
         navigate('/login'); // Regisztráció után átirányítás a bejelentkezési oldalra
       }, 2000);
     } catch (err) {
-      setError(err.response?.data || 'Hiba történt a regisztráció során.');
+      console.log(err);
+      
+      setError('Hiba történt a regisztráció során.');
     }
   };
 
@@ -128,7 +133,7 @@ function RegisterPage() {
             elfogadom a <Link to="#" onClick={openTermsPopup}>Felhasználói feltételek</Link>
           </label>
         </div>
-        <button type="submit" className="btn w-100">Regisztráció</button>
+        <button type="submit" className="registBtn w-100">Regisztráció</button>
       </form>
 
       {notification && <p className="notification">{notification}</p>}

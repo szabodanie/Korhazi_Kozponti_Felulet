@@ -1,36 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './FloatingSquares.css';
 
 // Képek importálása
-import pirulaImage from '../src/pirula.png';
-import dobozpirulaImage from '../src/dobozpirula.png';
+import pirulaImage from './assets/pirula.png';
+import dobozpirulaImage from './assets/dobozpirula.png';
 
+// Kép váltás
 const FloatingSquares = () => {
-    const [images, setImages] = useState([pirulaImage, dobozpirulaImage]); // A képeket tömbben tároljuk
+    const images = [pirulaImage, dobozpirulaImage];
 
-    useEffect(() => {
-        const spanElements = Array.from(document.querySelectorAll('.wrapper span'));
-
-        // Kép váltás minden elemhez
-        spanElements.forEach((span, index) => {
-            const image = images[index % 2]; // Felváltva a képek
-            span.style.backgroundImage = `url(${image})`; // Dinamikusan állítjuk be a háttérképet
-        });
-    }, [images]); // Amikor a képek változnak, újra lefut
+    const floatingItems = Array.from({ length: 10 }, (_, i) => {
+        const img = images[i % images.length];
+        const style = {
+            backgroundImage: `url(${img})`,
+        };
+        return <span key={i} className={`item item-${i + 1}`} style={style}></span>;
+    });
 
     return (
-        <div className="wrapper">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+        <div className="wrapper">{floatingItems}</div>
     );
 }
 

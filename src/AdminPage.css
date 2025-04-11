@@ -1,23 +1,133 @@
 .admin-container {
+    padding: 30px;
+    font-family: 'Tektur', Arial, sans-serif;
+    color: #333;
+  }
+  
+  .add-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .add-user-form {
+    flex: 1 1 350px;
+    background: white;
     padding: 20px;
-}
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .add-user-form input,
+  .add-user-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .add-user-form button {
+    background-color: #ff0000;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-user-form button:hover {
+    background-color: #cc0000;
+  }
+  
+  .h2-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #333;
+  }
 
-.admin-table {
+  .admin-table-wrapper .h2-title {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #cc0000;
+    font-weight: bold;
+  }
+  
+  .admin-table-wrapper {
+    margin-top: 30px;
+    overflow-x: auto;
+    background-color: grey;
+  }
+  
+  .admin-table {
     width: 100%;
     border-collapse: collapse;
-}
-
-.admin-table th,
-.admin-table td {
+    margin-bottom: 40px;
+  }
+  
+  .admin-table th,
+  .admin-table td {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 10px 12px;
     text-align: left;
-}
+  }
+  
+  .admin-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    .add-section {
+      flex-direction: column;
+    }
+  
+    .admin-table th,
+    .admin-table td {
+      font-size: 14px;
+    }
+  
+    .section-title {
+      font-size: 1.6rem;
+    }
+  }
 
-.admin-table th {
-    background-color: #f4f4f4;
-}
-
-.admin-table button {
+  .admin-table button {
     margin-right: 5px;
-}
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .admin-table button:hover {
+    opacity: 0.9;
+  }
+  
+  button.update {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  button.delete {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  button.save {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  button.cancel {
+    background-color: #6c757d;
+    color: white;
+  }
+  

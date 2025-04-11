@@ -1,14 +1,18 @@
 /* Regisztrációs konténer alap stílusa */
 .regist-container {
-  width: 300px;
+  max-width: 400px;
   margin: 0 auto;
   padding: 20px;
   border: 3px solid #ff0000;
-  background-image: url('../src/kartyahatter.png');
+  background-image: url('./assets/kartyahatter.png');
+  background-size: cover;
+  background-position: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  color: #ff0000;
   font-family: 'Tektur', Arial, sans-serif;
+  color: #ff0000;
+  margin-top: 10px;
+  font-size: 0.95rem;
 }
 
 /* Input mezők stílusa */
@@ -30,15 +34,6 @@ button:hover {
 }
 
 /* Regisztrációs form stílusa */
-.register-container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
-  background-image: url('../src/korhatter.png');
-}
 
 h2 {
   text-align: center;
@@ -60,20 +55,20 @@ h2 {
   border-radius: 5px;
 }
 
-.btn {
+.regist-container .registBtn {
   display: inline-block;
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
-  color: #fff;
+  color: #ff0000;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  background-color: transparent;
 }
 
-.btn:hover {
-  background-color: #0056b3;
+.regist-container .registBtn:hover {
+  color: rgb(212, 48, 48);
 }
 
 .notification {
@@ -121,31 +116,46 @@ h2 {
 /* Reszponzív módosítások mobilra */
 @media (max-width: 768px) {
   /* Regisztrációs konténer szélessége mobilon */
-  .register-container {
-      width: 90%; /* A szélesség 90%-ra csökken */
-      padding: 16px; /* Csökkentett padding */
+  .regist-container {
+      width: 90%;
+      padding: 16px;
+      background-size: cover;
+      background-position: center;
   }
 
   /* A gombok szélessége 100%-ra módosítva mobilon */
-  .btn {
-      width: 100%; /* A gombok teljes szélessége */
-      font-size: 14px; /* Kisebb betűméret mobilon */
+  .regist-container .registBtn {
+      width: 100%;
+      font-size: 14px;
   }
 
   /* Form inputok szélessége és padding csökkentése */
   .form-control {
-      font-size: 14px; /* Kisebb betűméret */
-      padding: 8px; /* Kisebb padding */
+      font-size: 14px;
+      padding: 8px;
   }
 
   /* Címek és űrlapok igazítása mobilra */
   h2 {
-      font-size: 1.5em; /* Kisebb betűméret */
+      font-size: 1.5em;
   }
 
   /* Felugró ablakok reszponzív beállítása */
   .popup-content {
-      width: 95%; /* Felugró ablak szélessége mobilon */
-      padding: 10px; /* Kisebb padding */
+      width: 95%;
+      padding: 10px;
   }
+
+  .popup-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .popup-content p {
+    font-size: 0.9rem;
+  }
+
+  .form-label {
+    font-size: 0.95rem;
+  }
+
 }

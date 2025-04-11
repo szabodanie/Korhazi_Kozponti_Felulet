@@ -3,35 +3,44 @@ import Card from './Card';
 import './DoctorsPage.css';
 import { UserContext } from './UserContext';
 import axios from 'axios';
+import orvos1 from './assets/orvos1.png';
+import orvos2 from './assets/orvos2.png';
+import orvos3 from './assets/orvos3.png';
 
 function DoctorsPage() {
     const [doctors, setDoctors] = useState([]);
-    const [filter, setFilter] = useState('');
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState('');
+    const [loading, setLoading] = useState(false);
     const [file, setFile] = useState(null);
     const [newDoctor, setNewDoctor] = useState({
         vezeteknev: '',
         keresztnev: '',
         specialitas: '',
     });
+    const fallbackImages = [orvos1, orvos2, orvos3];
 
     const { user } = useContext(UserContext);
     const isAdmin = user?.role === 'admin';
 
     useEffect(() => {
+
         const fetchDoctors = async () => {
+            setError('');
+            setSuccess('');
+            setLoading(true);
             try {
-                const response = await fetch(`${process.env.REACT_APP_URL}/api/Orvosok`, {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/Orvosok`, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
                 });
 
-                if (!response.ok) throw new Error('Nem sikerült lekérdezni az orvosok adatait.');
-
-                const data = await response.json();
-                setDoctors(data);
+                setSuccess('Az orvosok sikeresen betöltődtek!');
+                setDoctors(response.data);
             } catch (error) {
-                setError(error.message);
+                console.error('Hiba történt az orvosok lekérdezésekor:', error);
+                setError('Nem sikerült lekérdezni az orvosok adatait.');
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -55,30 +64,30 @@ function DoctorsPage() {
 
         try {
             const formData = new FormData();
-            formData.append("vezeteknev", newDoctor.vezeteknev);
-            formData.append("keresztnev", newDoctor.keresztnev);
-            formData.append("specialitas", newDoctor.specialitas);
+            // formData.append("vezeteknev", newDoctor.vezeteknev);
+            // formData.append("keresztnev", newDoctor.keresztnev);
+            // formData.append("specialitas", newDoctor.specialitas);
+            formData.append("kep", file);
 
-            const imageData = new FormData();
-            imageData.append("kep", file);
-            console.log(imageData, formData);
-
-            const response = await axios.post(`${process.env.REACT_APP_URL}/api/Orvosok`, {imageData}, {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/Orvosok`, formData, {
                 headers: { 
-                    Authorization: `Bearer ${localStorage.getItem('token')}` 
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'multipart/form-data',
                 },
-                params: formData
+                params: {
+                    vezeteknev: newDoctor.vezeteknev,
+                    keresztnev: newDoctor.keresztnev,
+                    specialitas: newDoctor.specialitas
+                }
             });
 
-            if (!response.ok) throw new Error('Nem sikerült az orvos hozzáadása.');
-
-            const addedDoctor = await response.json();
-            setDoctors([...doctors, addedDoctor]);
+            setDoctors([...doctors, response.data]);
             setNewDoctor({ vezeteknev: '', keresztnev: '', specialitas: '' });
             setFile(null);
             setSuccess('Az orvos sikeresen hozzáadva!');
         } catch (error) {
-            setError(error.message);
+            console.error('Hiba történt az orvos hozzáadásakor:', error);
+            setError('Nem sikerült az orvos hozzáadása.');
         }
     };
 
@@ -89,13 +98,10 @@ function DoctorsPage() {
 
     return (
         <div className="DoctorsPage">
-            <h1>Orvosaink</h1>
-            {success && <div className="success-message">{success}</div>}
-            {error && <div className="error-message">Hiba történt: {error}</div>}
-
+            <h1 className='section-title'>Orvosaink</h1>
             {isAdmin && (
                 <div className="add-doctor-form">
-                    <h2>Új orvos hozzáadása</h2>
+                    <h2 className='h2-title'>Új orvos hozzáadása</h2>
                     <input type="text" name="vezeteknev" placeholder="Vezetéknév" value={newDoctor.vezeteknev} onChange={handleInputChange} />
                     <input type="text" name="keresztnev" placeholder="Keresztnév" value={newDoctor.keresztnev} onChange={handleInputChange} />
                     <input type="text" name="specialitas" placeholder="Specialitás" value={newDoctor.specialitas} onChange={handleInputChange} />
@@ -103,13 +109,15 @@ function DoctorsPage() {
                     <button onClick={handleAddDoctor}>Hozzáadás</button>
                 </div>
             )}
-
-            <div className="card-container">
+            {loading && <div className="loading">Betöltés...</div>}
+            {success && <div className="success-message">{success}</div>}
+            {error && <div className="error">Hiba történt: {error}</div>}
+            <div className="card-container row">
                 {doctors.map((doctor, index) => (
                     <Card
-                        key={index}
+                        key={doctor.id}
                         title={`${doctor.vezeteknev} ${doctor.keresztnev}`}
-                        image={doctor.KepURL ? `data:image/jpeg;base64,${doctor.KepURL}` : 'https://example.com/default.jpg'}
+                        image={doctor.kepURL ? `data:image/jpeg;base64,${doctor.kepURL}` : fallbackImages[index % fallbackImages.length]}
                         description={doctor.specialitas}
                     />
                 ))}

@@ -25,7 +25,7 @@ function App() {
     link.rel = 'icon';
     link.href = '/favicon.io/favicon.ico';
     document.head.appendChild(link);
-    
+
     const interval = setInterval(() => {
       const newIconIndex = Math.floor(Math.random() * 3);
       const targetHeight = `${Math.random() * -500}px`;
@@ -49,13 +49,11 @@ function App() {
             <Route path="/orvosaink" element={<DoctorsPage />} />
             <Route path="/adatbazis" element={<AppointmentPage />} />
             <Route path="/bejelentkezes" element={<LoginPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
             <Route path="/regisztracio" element={<RegistPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/doctor-login" element={<DoctorLoginPage />} />
-            <Route path="/" element={<HomePage />} />
-        <Route path="/admin-dashboard" element={<AdminPage />} />
+            <Route path="/admin-dashboard" element={<AdminPage />} />
+            <Route path="*" element={<HomePage />} />
           </Routes>
 
         </div>

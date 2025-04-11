@@ -1,6 +1,4 @@
-/* src/css/appointment.css */
-
-/* Container for the entire page */
+/* A teljes oldal container */
 .border-container {
   border: 1px solid #ccc;
   padding: 16px;
@@ -10,68 +8,136 @@
   
 }
 
-h1, h2 {
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin: 30px 0 20px;
+  color: #cc0000;
+  font-family: 'Tektur', Arial, sans-serif;
+  font-weight: bold;
+}
+
+/* Az űrlap stílusa */
+.appointment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 4px;
   color: #333;
 }
 
-/* Style for the form */
-.appointment-form {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: 'Tektur', Arial, sans-serif;
 }
 
-.appointment-form input, .appointment-form select {
-  padding: 8px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
 }
 
 .appointment-form button {
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #007bff;
+  background-color: #ff0000;
   color: white;
   border: none;
-  border-radius: 4px;
-}
-
-/* Style for the appointment list container */
-.appointments-list {
-  background-color: white;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: bold;
   border-radius: 8px;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.appointment-form button:hover {
+  background-color: #cc0000;
+}
+
+/* Az appointment lista container stílusa */
+.appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 40px auto;
 }
 
-.appointments-list ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+.appointment-card {
+  background: rgba(255, 255, 255, 0.8);
+  border-left: 5px solid #ccc;
+  padding: 16px;
+  border-radius: 8px;
+  font-family: 'Tektur', Arial, sans-serif;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
 }
 
-.appointments-list li {
-  border-bottom: 1px solid #eee;
-  padding: 10px 0;
+.appointment-header {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.complaint {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.status-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.status-badge.függőben {
+  background-color: orange;
+}
+
+.status-badge.megerősítve {
+  background-color: green;
+}
+
+.status-badge.törölve {
+  background-color: crimson;
 }
 
 .appointments-list li:last-child {
   border-bottom: none;
 }
 
-/* Styling for the container of the form and list */
+/* Az űrlap és a lista container stílusa */
 .appointment-container {
-  margin: 20px;
-  background-color: #f2f2f2;
   font-family: 'Tektur', Arial, sans-serif;
 }
 
-/* Table styling */
+/* Táblázat stílusa */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -87,13 +153,13 @@ th {
   background-color: #f2f2f2;
 }
 
-/* Styling for header text */
+/* A fejléc szövegének stílusa */
 h1 {
   font-size: 1.5rem;
   color: #333;
 }
 
-/* Styling for the wrap container with animation */
+/* A wrap konténer stílusa animációval */
 .wrap {
   display: flex;
   flex-wrap: nowrap;
@@ -124,7 +190,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 15vmin;
+  width: clamp(120px, 15vmin, 200px);
   height: 100%;
   padding: 0.5rem 0 0 0.5rem;
   border: 3px solid;
@@ -145,7 +211,7 @@ h1 {
   right: 0;
   width: 60vmin;
   height: 100%;
-  background-image: url(./orvosok.png);
+  background-image: url(./assets/orvosok.png);
   background-size: cover;
   transition: 0.3s ease-in-out;
 }
@@ -177,6 +243,7 @@ h1 {
   border: 1px solid indigo;
   border-radius: 50%;
   transition: 0.3s ease-in-out 0.3s;
+  animation: dotAnimation 3s infinite;
 }
 
 .text {
@@ -191,7 +258,24 @@ h1 {
   overflow-y: scroll;
 }
 
-/* Hover Effects */
+.text ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.text li {
+  margin-bottom: 0.5rem;
+}
+
+.kepalairas {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-top: -10px;
+  color: #555;
+}
+
+/* Hover effektek */
 .wrap:hover .overlay {
   transform: translateX(-60vmin);
 }
@@ -213,7 +297,7 @@ h1 {
   background: white;
 }
 
-/* Animations and timing delays */
+/* Animációk és időzítési késleltetések */
 .animate {
   animation-duration: 0.7s;
   animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
@@ -280,7 +364,7 @@ h1 {
   }
 }
 
-/* Delay animations */
+/* Késleltetési animációk */
 .delay-1 {
   animation-delay: 0.3s;
 }
@@ -312,3 +396,68 @@ h1 {
 .delay-8 {
   animation-delay: 2.4s;
 }
+
+
+@media (max-width: 768px) {
+  .wrap:hover .overlay,
+  .wrap:hover .overlay-content,
+  .wrap:hover .image-content,
+  .wrap:hover .dots {
+    transform: none !important;
+  }
+
+  .wrap {
+    flex-direction: column;
+    width: 90%;
+    max-width: 850px;
+    height: auto;
+  }
+
+  .text {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    padding: 1rem;
+  }
+
+  .image-content {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    border-radius: 10px;
+  }
+
+  .overlay-content {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .appointment-container {
+    padding: 10px;
+  }
+
+  .appointments-list {
+    padding: 10px;
+  }
+
+  .appointment-form {
+    padding: 16px;
+    width: 90%;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-top: 20px;
+  }
+}
+
+/* Animációk */
+@keyframes dotAnimation {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+  100% { transform: scale(1); }
+}
+

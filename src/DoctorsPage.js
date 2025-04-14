@@ -53,6 +53,19 @@ function DoctorsPage() {
         }
     };
 
+ const convertToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        // Eltávolítjuk a "data:*/*;base64," előtagot
+        const base64String = reader.result.split(',')[1];
+        resolve(base64String);
+      };
+      reader.onerror = error => reject(error);
+    });
+  };
+
     const handleAddDoctor = async () => {
         setError('');
         setSuccess('');
@@ -63,22 +76,23 @@ function DoctorsPage() {
         }
 
         try {
-            const formData = new FormData();
-            // formData.append("vezeteknev", newDoctor.vezeteknev);
-            // formData.append("keresztnev", newDoctor.keresztnev);
-            // formData.append("specialitas", newDoctor.specialitas);
-            formData.append("kep", file);
+            const base64Image = await convertToBase64(file);
 
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/Orvosok`, formData, {
-                headers: { 
-                    Authorization: `Bearer ${localStorage.getItem('token')}`,
-                    'Content-Type': 'multipart/form-data',
-                },
-                params: {
-                    vezeteknev: newDoctor.vezeteknev,
-                    keresztnev: newDoctor.keresztnev,
-                    specialitas: newDoctor.specialitas
-                }
+            const formData = {
+                vezeteknev: newDoctor.vezeteknev,
+                keresztnev: newDoctor.keresztnev,
+                specialitas: newDoctor.specialitas
+            }
+
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/Orvosok`, {
+                createOrvosDto: formData,
+                base64File: base64Image,
+                fileName: file.name,
+                contextType: file.type,
+                // headers: { 
+                //     Authorization: `Bearer ${localStorage.getItem('token')}`
+                // }
+               
             });
 
             setDoctors([...doctors, response.data]);
